@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import reducer from './reducers' // 总reducer 总状态: {count, products}
 
-const IS_DEV = process.env.NODE_ENV==='development' // 当前环境是否是开发环境
+import { IS_DEV } from '../config'; // 当前环境是否是开发环境
 
 // 向外默认一个store对象
 export default createStore(

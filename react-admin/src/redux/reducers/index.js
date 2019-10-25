@@ -2,8 +2,8 @@
 reduer函数: 根据原有的state和指定的action, 产生并返回一个新的state
 */
 import { combineReducers } from "redux"
-import count from './count'
-import products from './products'
+import user from './user'
+import headerTitle from './header-title'
 
 
 
@@ -16,6 +16,6 @@ import products from './products'
   }
 */
 export default combineReducers({
-  count, 
-  products
+ user,
+ headerTitle
 })

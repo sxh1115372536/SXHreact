@@ -2,25 +2,21 @@
 应用根组件
 */
 import React, {Component} from 'react'
-import {Button, message} from 'antd'
-import {HashRouter, BrowserRouter, Route, Switch} from 'react-router-dom'
-import Login from "./pages/login/login"
-import Admin from "./pages/admin/admin"
+import {Router, Route, Switch} from 'react-router-dom'
+import Login from "./container/login"
+import Admin from "./container/admin"
+import history from './history'
 
 export default class App extends Component {
 
-  handleClick = () => {
-    message.success('响应点击')
-  }
-
   render () {
     return (
-      <HashRouter>
-        <Switch> {/* /login/xxx   默认使用不完全匹配 | 使用第一个匹配的路由 */}
-          <Route path="/login" component={Login}/>
+      <Router history={history}>
+        <Switch> { }
+          <Route path="/login" component={Login} exact/>
           <Route path="/" component={Admin}/>
         </Switch>
-      </HashRouter>
+      </Router>
     )
   }
 }
