@@ -7,7 +7,7 @@ import{setHeaderTitle} from '../../../redux/action-creators/header-title'
 import menuList from '../../../config/menu-config'
 import logo from '../../../assets/images/logo.png'
 import './index.less'
-import { IconMap } from 'antd/lib/result';
+
 const {SubMenu,Item} = Menu
 @connect(state=>({headerTitle:state.headerTitle}),{setHeaderTitle})
 @withRouter
@@ -16,7 +16,7 @@ class LeftNav extends Component{
     return menuList.reduce((pre,item)=>{
       const path = this.props.location.pathname
       if (!item.children) {
-        if(item.key===path && this.props.headerTitle!==item.title){
+        if(path.indexOf(item.key)===0 && this.props.headerTitle!==item.title){
         this.props.setHeaderTitle(item.title)
       }
       pre.push((
@@ -28,7 +28,7 @@ class LeftNav extends Component{
         </Item>
       ))
     } else {
-      if (item.children.some(item =>item.key ===path)) {
+      if (item.children.some(item =>path.indexOf(item.key)===0)) {
         this.openKey=item.key
       }
       pre.push(
@@ -78,6 +78,9 @@ getMenuNodes =(menuList)=>{
 render(){
   const menuNodes =this.getMenuNodes_reduce(menuList)
   const selectedKey = this.props.location.pathname
+  if(selectedKey.indexOf('/product/')===0){
+    // selectedKey='/product'
+  }
   const openKey = this.openKey
   console.log('left-nav render()',selectedKey,openKey)
   return(

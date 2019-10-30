@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
 
 export default function  WithCheckLogin(WrappedComponent) {
-  @connect(state =>({hasLogin:this.state.user.hasLogin}))
+  @connect(state =>({hasLogin:state.user.hasLogin}))
   class HocComponent extends React.Component{
     render(){
       const path = this.props.location.pathname

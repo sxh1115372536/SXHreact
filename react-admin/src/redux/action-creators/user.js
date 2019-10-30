@@ -1,5 +1,5 @@
 import {reqLogin} from '../../api'
-import { message } from 'antd';
+import { message } from 'antd'
 import { SAVE_USER_TOKEN,REMOVE_USER_TOKEN } from '../action-types';
 import storage from "../../utils/storage"
 
@@ -12,11 +12,11 @@ export const removeUserToken = () =>{
   storage.remove(storage.KEYS.TOKEN_KEY)
   return {type:REMOVE_USER_TOKEN}
 }
-export function loginAsyns(username,password) {
+export function loginAsync(username,password) {
   return async dispatch =>{
     const result = await reqLogin({username,password})
     if (result.status===0) {
-      const{user,token}=result.data
+      const{user,token} = result.data
       // localStorage.setItem('user_key',JSON.stringify(user))
       // localStorage.setItem('token_key',token)
       storage.set(storage.KEYS.USER_KEY,user)
